@@ -2,6 +2,7 @@ package com.cursoudemy.workshop.config;
 
 import com.cursoudemy.workshop.models.Order;
 import com.cursoudemy.workshop.models.User;
+import com.cursoudemy.workshop.models.enums.OrderStatus;
 import com.cursoudemy.workshop.repositories.OrderRepository;
 import com.cursoudemy.workshop.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,9 @@ public class TestConfig implements CommandLineRunner {
         User u1 = new User(null, "Maria", "maria@gmail.com", "99999999", "123456");
         User u2 = new User(null, "Alex", "alex@gmail.com", "88888888", "123456");
 
-        Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), u1);
-        Order o2 = new Order(null, Instant.parse("2019-06-21T19:53:07Z"), u2);
-        Order o3 = new Order(null, Instant.parse("2019-06-22T19:53:07Z"), u1);
+        Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.WAITING_PAYMENT, u1);
+        Order o2 = new Order(null, Instant.parse("2019-06-21T19:53:07Z"), OrderStatus.PAID, u2);
+        Order o3 = new Order(null, Instant.parse("2019-06-22T19:53:07Z"), OrderStatus.PAID, u1);
 
         userRepository.save(u1);
         userRepository.save(u2);
